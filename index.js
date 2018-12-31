@@ -83,7 +83,7 @@
   const subtractor = curry(subtract)
   const multiplier = curry(multiply)
   const divider = curry(divide)
-  const percentor = num => (num / 100)
+  const percentor = (total, curr) => roundAnswer(total ? total / 100 * curr : curr / 100)
   const resetIdentityProperty = store => ({...store, identityProperty: 0})
   const resetCurrent = (store) => ({...store, current: 0})
   const showTotalInDisplay = (store) => ({...store, display: store.total})
@@ -141,7 +141,7 @@
       case PERCENT:
         return {
           ...store,
-          ...syncDisplayAndCurrent(percentor(store.current))
+          ...syncDisplayAndCurrent(percentor(store.total, store.current))
         }
       case NUMBER:
         return {

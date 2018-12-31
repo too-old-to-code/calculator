@@ -1,6 +1,6 @@
 const common = [
   // 0
-  (s) => "When the " + s.key.toLowerCase() + " button is clicked, the condition in the 'if' \
+  (s) => "When the " + (s.key && s.key.toLowerCase()) + " button is clicked, the condition in the 'if' \
     statement is not satisfied and so the update function is invoked with two arguments; the store in \
     its current state, and an object with a 'message' property. The message contains the action " +
     s.key + " (taken from the data-id of the HTML element).",
@@ -32,7 +32,7 @@ const common = [
           total from the partialised 'multiply' function's scope would be assigned to the local 'total' unchanged."
         case ('DIVIDE'):
           return "The last of these buttons you pressed before now, was the "+ s.operator +" button. This will have set the 'fn' method to be a partialised, \
-          'multiply' function, with a value in its scope equal to the calculator's current total. The 'store.current' value that is passed into this, will \
+          'divide' function, with a value in its scope equal to the calculator's current total. The 'store.current' value that is passed into this, will \
           be added to that total and returned and assigned to the local 'total' variable. If there was no 'store.current' value, for example if \
           the DIVIDE button was pressed multiple times in a row, the 'store.identityProperty' would be passed in as an argument. This is set to 1 whenever \
           the DIVIDE button is pressed, which is truthy and therefore short-circuits the evaluation. This is the 'Identity property' for division, so the \
@@ -476,12 +476,47 @@ const snippets = {
         highlight: '53-55,58'
       },
       {
-        text: (s) => "Once the decimal button has been pressed",
-        highlight: '23'
+        text: (s) => {
+          return "Inside the update function, the first thing we do is to invoke the store's 'fn' method. \
+          The 'fn' method is determined by a keypress prior to the current key pressed.\
+          It is set whenever (i) a binary operator button is pressed, (ii) the equals button is pressed, or (iii) the clear button is pressed. \
+          This is not relevant when the decimal point button is pressed (as you just have) because the local 'total' variable, to which the result \
+          of this function is assigned, is not used in this circumstance."
+        },
+        highlight: '94'
       },
       {
-        text: (s) => "Second page of the decimal sequence",
-        highlight: ''
+        text: (s) => {
+          return "The " + s.key + " case in the switch statement is matched."
+        },
+        highlight: '143-148'
+      },
+      {
+        text: (s) => {
+          return "If the number we are forming already has a decimal point, we return the original store. This is because we don't want a \
+          user to be able to form an invalid number with more than one decimal point."
+        },
+        highlight: '144'
+      },
+      {
+        text: (s) => {
+          return "Otherwise, we return a clone of the store with some updated values from the invocation of the 'syncDisplayAndCurrent' function. \
+          We pass in a string to this argument, made up of the number formed so far with a '.' at the end of it."
+        },
+        highlight: '147'
+      },
+      {
+        text: (s) => "Very simply, this synchronises the 'store.value' and 'store.current' properties. The new values for \
+        these properties are returned from this function...",
+        highlight: '83'
+      },
+      {
+        text: (s) => "...where they are destructured into an object that is returned from the case statement.",
+        highlight: '145-148'
+      },
+      {
+        text: common[5],
+        highlight: '58,60'
       }
     ],
     equals: [
@@ -576,7 +611,7 @@ const snippets = {
         const subtractor = curry(subtract)
         const multiplier = curry(multiply)
         const divider = curry(divide)
-        const percentor = num => (num / 100)
+        const percentor = (total, curr) => roundAnswer(total ? total / 100 * curr : curr / 100)
         const resetIdentityProperty = store => ({...store, identityProperty: 0})
         const resetCurrent = (store) => ({...store, current: 0})
         const showTotalInDisplay = (store) => ({...store, display: store.total})
@@ -633,7 +668,7 @@ const snippets = {
             case PERCENT:
               return {
                 ...store,
-                ...syncDisplayAndCurrent(percentor(store.current))
+                ...syncDisplayAndCurrent(percentor(store.total, store.current))
               }
             case NUMBER:
               return {
