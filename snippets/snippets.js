@@ -93,6 +93,12 @@ const snippets = {
         highlight: '15-22, 25'
       },
       {
+        text: (s) => "After any of the calculator's buttons are pressed, a new store object is created as opposed \
+        to the store being mutated. Each old copy of the store will be pushed into this 'totalArr' array, so that we \
+        can revisit the store as it was in the past using the replay button.",
+        highlight: '24'
+      },
+      {
         text: (s) => "We get references to the DOM elements that we wish to manipulate or to listen to for events.\n\n\
         calculator: we will listen for click events on this element - using the event delegation pattern to determine which \
         button was pressed.\n\n\
@@ -479,7 +485,7 @@ const snippets = {
         text: (s) => {
           return "Inside the update function, the first thing we do is to invoke the store's 'fn' method. \
           The 'fn' method is determined by a keypress prior to the current key pressed.\
-          It is set whenever (i) a binary operator button is pressed, (ii) the equals button is pressed, or (iii) the clear button is pressed. \
+          It is set whenever (i) a binary operator button is pressed, (ii) the equals button is pressed, or (iii) the clear button is pressed. \n\n\
           This is not relevant when the decimal point button is pressed (as you just have) because the local 'total' variable, to which the result \
           of this function is assigned, is not used in this circumstance."
         },
