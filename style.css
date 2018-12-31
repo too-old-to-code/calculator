@@ -12,14 +12,15 @@ body * {
 }
 
 table {
+  box-sizing: border-box;
   border-radius: 10px;
   overflow: hidden;
   font-family: sans-serif;
   font-size: 1.2em;
-  border: solid black 1px;
+  border: solid black 2px;
   border-collapse: collapse;
   margin: 10px auto;
-  background-color: #eaecf0;
+  background-color: black;
 }
 
 td {
@@ -27,6 +28,10 @@ td {
   height: 50px;
   text-align: center;
   border: solid black 1px;
+}
+
+tr {
+  background-color: #eaecf0;
 }
 
 #screen {
@@ -45,6 +50,7 @@ td {
   border:1px solid black;
   display: flex;
   flex-direction: column;
+  background-color: #fff9e5;
 }
 
 
@@ -79,47 +85,6 @@ td {
   visibility: visible;
 }
 
-.line-highlight {
-  background: linear-gradient(to right, hsla(37, 84%, 68%,.2) 70%, hsla(37, 64%, 50%,.1))
-}
-
-.left-side {
-  display: flex;
-  flex-direction: column;
-  flex: 2;
-  height: 100vh;
-}
-
-.right-side {
-  flex: 3;
-  display: flex;
-  height: 100vh;
-
-  /*position:absolute;
-  top: 0;
-  right:0;*/
-}
-/*.right-side pre[class*="language-"] {
-  position:fixed;
-  top:0;
-}*/
-
-#explanation {
-  margin: 50px 30px 20px 30px;
-  line-height: 1.5;
-  flex: 1;
-  overflow-y: scroll;
-}
-
-.explanation-wrapper {
-  margin: 5px ;
-  border:1px solid black;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: #dfe6e9;
-}
-
 .buttons {
   margin: 5px;
   text-align: right;
@@ -133,17 +98,3 @@ td {
   background-color: #a29bfe;
   color: white;
 }
-
-.right-side > pre {
-  font-size: .8em;
-  border-radius: 0;
-  width: 100%;
-  height: 100%;
-  /*position: absolute;*/
-  margin: 0;
-  /*max-height: 80vh;*/
-}
-
-/*body > div {
-  flex:1;
-}*/

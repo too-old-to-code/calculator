@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-okaidia.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-highlight/prism-line-highlight.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="walkthrough.css">
+</head>
+<body>
+  <div class="left-side">
+    <div id="calculator-container">
+      <!-- <div class="fn-display">fn = <span class="data-id-value"></span></div> -->
+      <div class="horizontal-group">
+        <div class="vertical-group">
+          <pre class="store"></pre>
+          <div class="fn">
+            <span class="fn-title">Pending fn method</span>
+            <div class="fn-display">
+              <span class="data-id-value"></span>
+            </div>
+          </div>
+
+        </div>
+        <table id="calculator">
+          <tr>
+            <td id="screen" colspan="4"></td>
+          </tr>
+          <tr class="darker">
+            <td data-id="CLEAR" >AC</td>
+            <td data-id="NEGATE">+/-</td>
+            <td data-id="PERCENT">%</td>
+            <td data-id="DIVIDE" class="orange">/</td>
+          </tr>
+          <tr>
+            <td data-id="1">1</td>
+            <td data-id="2">2</td>
+            <td data-id="3">3</td>
+            <td data-id="MULTIPLY" class="orange">X</td>
+          </tr>
+          <tr>
+            <td data-id="4">4</td>
+            <td data-id="5">5</td>
+            <td data-id="6">6</td>
+            <td data-id="SUBTRACT" class="orange">-</td>
+          </tr>
+          <tr>
+            <td data-id="7">7</td>
+            <td data-id="8">8</td>
+            <td data-id="9">9</td>
+            <td data-id="ADD" class="orange">+</td>
+          </tr>
+          <tr>
+            <td data-id="0" colspan="2">0</td>
+            <td data-id="DECIMAL">.</td>
+            <td data-id="EQUALS" class="orange">=</td>
+          </tr>
+        </table>
+
+      </div>
+      <span class="buttons">
+        <button id="btn-replay">Replay</button>
+      </span>
+    </div>
+    <div class="explanation-wrapper">
+      <div class="explanation-title-pair">
+        <span class="explanation-title">Initialisation of app - </span>
+        <span class="sequence-index">1</span>
+      </div>
+      <div id="explanation">Here is some explanatory text</div>
+      <span class="buttons">
+        <button id="btn-prev">Prev</button>
+        <button id="btn-next">Next</button>
+      </span>
+    </div>
+  </div>
+  <div class="right-side">
+    <pre class="language-javascript line-numbers">
+      <code id="codeblock">
+        var a = 'hello';
+      </code>
+    </pre>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+  <script src="snippets/snippets.js"></script>
+  <script src="index.js"></script>
+  <script src="explainer.js"></script>
+</body>
+</html>

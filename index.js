@@ -25,6 +25,7 @@
     display: 0,
     current: 0,
     identityProperty: 0,
+    key: null,
     fn (arg) { return arg }
   }
 
@@ -72,16 +73,16 @@
   // UTILITIES
   const ROUND = 1e5
   const roundAnswer = (num) => Math.round(num * ROUND) / ROUND
-  const partialise = fn => num => nextNum => fn(parseFloat(num), nextNum)
+  const curry = fn => num => nextNum => fn(parseFloat(num), nextNum)
   const multiply = (num, nextNum) => roundAnswer(num * nextNum)
   const subtract = (num, nextNum) => roundAnswer(num - nextNum)
   const add = (num, nextNum) => roundAnswer(num + nextNum)
   const divide = (num, nextNum) => roundAnswer(num / nextNum)
   const hasDecimalAlready = num => String(num).includes('.')
-  const adder = partialise(add)
-  const subtractor = partialise(subtract)
-  const multiplier = partialise(multiply)
-  const divider = partialise(divide)
+  const adder = curry(add)
+  const subtractor = curry(subtract)
+  const multiplier = curry(multiply)
+  const divider = curry(divide)
   const percentor = num => (num / 100)
   const resetIdentityProperty = store => ({...store, identityProperty: 0})
   const resetCurrent = (store) => ({...store, current: 0})
@@ -99,6 +100,8 @@
   // UPDATE
   function update (store, action) {
     let total = store.fn(store.identityProperty || store.current)
+    console.log('total:', total)
+    console.log('action:', action)
     store = resetIdentityProperty(store)
     store.key = action.message
 
