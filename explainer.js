@@ -1,4 +1,4 @@
- (function () {
+setTimeout(function () {
   const calculator = document.getElementById('calculator')
   const codeblock = document.getElementById('codeblock')
   const explanation = document.getElementById('explanation')
@@ -144,8 +144,8 @@
     if (store.fn){
       console.log(store.fn.toString() )
     }
-    codeblock.innerText = snippets.code
 
+    codeblock.innerText = snippets.code
     codeblock.parentNode.dataset.line = currentSequence[sequenceIndex].highlight
     sequenceIndexDOM.innerText = `${sequenceIndex + 1}/${currentSequence.length}`
     explanation.innerText = currentSequence[sequenceIndex].text({
@@ -158,5 +158,4 @@
     previousStoreState = {...store}
     // lastOperatorPressed = currentOperator
   }
-
-})()
+}, 0)
