@@ -1,4 +1,4 @@
- (function () {
+ setTimeout(function () {
   const calculator = document.getElementById('calculator')
   const codeblock = document.getElementById('codeblock')
   const explanation = document.getElementById('explanation')
@@ -159,4 +159,4 @@
     // lastOperatorPressed = currentOperator
   }
 
-})()
+},0)
