@@ -67,6 +67,7 @@
     }
     screen.innerText = store.display
     totalArr.push(store)
+    textFit(screen, {maxFontSize: 50, alignVert: true})
     window.totalArr = totalArr
   }
 

@@ -38,11 +38,12 @@ tr {
   height: 80px;
   border: solid black 1px;
   text-align: right;
-  font-size: 2em;
+  font-size: 50px;
   padding: 0 10px;
   color: white;
   background-color: #575656;
   font-weight: 100;
+  max-width: 200px;
 }
 
 #calculator-container {
@@ -97,4 +98,9 @@ tr {
   border: 1px solid black;
   background-color: #a29bfe;
   color: white;
+}
+
+/* Adjust the styling from the textFit package */
+.textFitAlignVert {
+  padding: 0 10px;
 }
