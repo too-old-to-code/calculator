@@ -356,8 +356,8 @@ const snippets = {
       },
       {
         text: (s) => {
-          return "The 'multiplier' function is simply the 'multiply' function that has been curried using the 'curry' function. \
-          It takes the single argument given to it, and multiplies it with the value it already has in its scope."
+          return "The 'divider' function is simply the 'divide' function that has been curried using the 'curry' function. \
+          It takes the single argument given to it, and divides it by the value it already has in its scope."
         },
         highlight: '68, 69, 76'
       },
@@ -438,13 +438,28 @@ const snippets = {
         text: (s) => {
           return "The " + s.key + " case in the switch statement is matched. From here we return a copy of the store \
           with updated properties. The updated properties come from the result of the 'syncDisplayAndCurrent' function \
-          invocation. This function is invoked with a the percentage "
+          invocation. This function is invoked with another function as an argument - the 'percentor' function."
         },
         highlight: '132-136'
       },
       {
-        text: (s) => "Second page of the percent sequence",
-        highlight: ''
+        text: (s) => "The 'percentor' function can operate in two different ways. If there is no running total, i.e. if the \
+        percentage button was the first operator pressed then it will simple divide the current number on the screen by 100. \
+        If there is a running total however, the current number on the screen will be multiplied by one-hundredth of the total. \
+        ",
+        highlight: '78'
+      },
+      {
+        text: (s) => "The percentor function returns and is popped off the stack. And then...",
+        highlight: '132-136'
+      },
+      {
+        text: (s) => "...the syncDisplayAndCurrent function returns and is popped off the stack. An object is returned.",
+        highlight: '58'
+      },
+      {
+        text: common[5],
+        highlight: '60'
       }
     ],
     clear: [
@@ -600,8 +615,8 @@ const snippets = {
             store = update(store, { message: button })
           }
           screen.innerText = store.display
-          totalArr.push(store)
-          window.totalArr = totalArr
+          totalArr.push(store) // store each action, for replay
+
         }
 
         // UTILITIES

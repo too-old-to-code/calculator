@@ -1,4 +1,9 @@
 setTimeout(function () {
+
+  Prism.hooks.add('before-highlight', function (env) {
+    env.code = env.element.innerText
+  });
+
   const calculator = document.getElementById('calculator')
   const codeblock = document.getElementById('codeblock')
   const explanation = document.getElementById('explanation')
