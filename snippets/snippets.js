@@ -546,8 +546,26 @@ const snippets = {
         highlight: '53-55,58'
       },
       {
-        text: (s) => "Once the equals button has been pressed",
-        highlight: '23'
+        text: common[1],
+        highlight: '94'
+      },
+      {
+        text: (s) => {
+          return "The " + s.key +" case in the switch statement is matched. From here we return a copy of the store \
+        with updated properties. The 'fn' property is assigned the result of a 'multiplier' \
+        function invocation with the local 'total' variable passed as an argument. The result of this invocation is a \
+        partialised function that will take one argument and return the result of that argument multiplied with the 'total' \
+        just passed in."
+        },
+        highlight: '126-131'
+      },
+      {
+        text: common[2],
+        highlight: '84-86, 106'
+      },
+      {
+        text: common[3],
+        highlight: '80-82'
       },
       {
         text: (s) => "Second page of the equals sequence",
